@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Infinite Scroll | Homebell</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="author" content="Jyotishman saikia">
+	<link rel="stylesheet" href="css/style.css">
+</head>
+<body ng-app="storeApp" ng-cloak>
+	<div class="main-wrapper" ng-controller="homeCtrl">
+		<header>
+			<div class="logo">
+				<a href="">Homebell Assignment</a>
+			</div>
+			<div class="search-wrapper">
+				<form class="product-search-form">
+					<div class="input-group">
+						<input type="text" ng-model="searchProducts" class="form-control" placeholder="Search Products..">
+					</div>	
+				</form>
+			</div>
+		</header>
+		<div on-scroll="increaseLimit();" class="container">
+			<ul class="product-item-wrapper">
+		    <li ng-repeat="product in productData | filter: searchProducts | limitTo: limit">
+		    	<div class="product-img-wrapper">
+		    		<img ng-src="https://loremflickr.com/320/240?random={{$index}}" alt="">
+		    	</div>
+		    	<h4 class="product-title"><a href="#">{{ product.title }}</a></h4>
+		    	<p class="product-desc">{{ product.slogan }}</p>
+		    	<p class="product-price">INR: {{ product.price }}</p>
+		  	</li>
+		  	<p ng-if="!productData.length">Sorry no products found</p>
+		  </ul>  
+		</div>
+	</div>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.0/angular.min.js"></script>
+	<script src="js/app.js"></script>
+</body>
+</html>
