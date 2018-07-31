@@ -157,6 +157,9 @@ ul {
   .form-control {
     width: 100%;
   }
+  .product-search-form{
+    max-width: 155px;
+  }
 }
 
 @media (min-width: 768px) and (max-width: 1024px) {
